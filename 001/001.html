@@ -1,0 +1,27 @@
+<svg height="0">
+    <defs>
+      <!-- patch id within code -->
+      <link rel="stylesheet" type="text/css" href="plotdb.min.css"/>
+      <script type="text/javascript" src="plotdb.min.js"></script>
+      <filter id="innerStroke" x="0" y="0" width="1" height="1">
+        <feMorphology operator="erode" in="SourceGraphic" radius="3" result="erode"/>
+        <feColorMatrix type="matrix" in="SourceGraphic" result="color"
+                       values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/>
+        <feMerge>
+          <feMergeNode in="color"/>
+          <feMergeNode in="erode"/>
+        </feMerge>
+      </filter>
+      <!-- patch id within code -->
+      <filter id="shadow" x="-0.5" y="-0.5" width="2" height="2">
+        <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="9.5"/>
+        <feMorphology operator="dilate" in="SourceGraphic" radius="2" result="dilate"/>
+        <feColorMatrix type="matrix" in="dilate" result="color" values="0.2 0 0 0 0   0 0.2 0 0 0   0 0 0.2 0 0    0 0 0 1 0"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="color"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
